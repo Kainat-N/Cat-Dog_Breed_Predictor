@@ -40,7 +40,7 @@ static/uploads/*
 Thumbs.db
 
 # Project specific
-*.keras
-*.h5
+- *.keras
+- *.h5
 *.log
 .env 
