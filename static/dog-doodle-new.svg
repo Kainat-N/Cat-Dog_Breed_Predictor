@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <!-- Head -->
+    <path d="M60 25C35 25 20 40 20 65C20 90 35 105 60 105C85 105 100 90 100 65C100 40 85 25 60 25Z" fill="#FFB088"/>
+    
+    <!-- White patches -->
+    <path d="M40 50L80 50L80 100L40 100Z" fill="white"/>
+    <path d="M50 40L70 40L70 55L50 55Z" fill="white"/>
+    
+    <!-- Face features -->
+    <g transform="translate(0, -5)">
+        <!-- Eyes with highlights -->
+        <circle cx="45" cy="65" r="6" fill="#4A4A4A"/>
+        <circle cx="75" cy="65" r="6" fill="#4A4A4A"/>
+        <circle cx="47" cy="63" r="2" fill="white"/>
+        <circle cx="77" cy="63" r="2" fill="white"/>
+        
+        <!-- Eyebrows -->
+        <path d="M40 56C40 56 43 54 48 56" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round"/>
+        <path d="M70 56C70 56 73 54 78 56" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round"/>
+        
+        <!-- Nose -->
+        <ellipse cx="60" cy="75" rx="7" ry="5" fill="#4A4A4A"/>
+        
+        <!-- Cheeks -->
+        <circle cx="40" cy="75" r="5" fill="#FFD0D0" opacity="0.6"/>
+        <circle cx="80" cy="75" r="5" fill="#FFD0D0" opacity="0.6"/>
+        
+        <!-- Happy mouth -->
+        <path d="M50 80Q60 87 70 80" fill="none" stroke="#4A4A4A" stroke-width="2.5" stroke-linecap="round"/>
+        
+        <!-- Tongue -->
+        <path d="M58 83Q60 88 62 83" fill="#FF9494"/>
+    </g>
+    
+    <!-- Ears -->
+    <path d="M35 15C35 15 45 10 50 30" fill="none" stroke="#FFB088" stroke-width="14" stroke-linecap="round"/>
+    <path d="M85 15C85 15 75 10 70 30" fill="none" stroke="#FFB088" stroke-width="14" stroke-linecap="round"/>
+    
+    <!-- Collar -->
+    <path d="M40 90L80 90" stroke="#FF9494" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="60" cy="92" r="4" fill="#FFD700"/>
+    
+    <!-- Sparkles -->
+    <circle cx="25" cy="40" r="2" fill="#FFD700"/>
+    <circle cx="95" cy="40" r="2" fill="#FFD700"/>
+    <circle cx="30" cy="35" r="1" fill="#FFD700"/>
+    <circle cx="90" cy="35" r="1" fill="#FFD700"/>
+</svg> 

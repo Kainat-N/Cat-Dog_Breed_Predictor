@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <!-- Face -->
+    <path d="M50 15C30 15 20 30 20 50C20 70 35 85 50 85C65 85 80 70 80 50C80 30 70 15 50 15Z" fill="#FFA07A"/>
+    <!-- White patches -->
+    <path d="M45 40C35 40 30 50 35 60C40 70 60 70 65 60C70 50 65 40 55 40Z" fill="white"/>
+    <!-- Eyes -->
+    <ellipse cx="35" cy="45" rx="4" ry="5" fill="#4A4A4A"/>
+    <ellipse cx="65" cy="45" rx="4" ry="5" fill="#4A4A4A"/>
+    <!-- Nose -->
+    <path d="M48 55L52 55Q50 58 48 55Z" fill="#FF9494"/>
+    <!-- Whiskers -->
+    <path d="M30 55L15 50" stroke="#4A4A4A" stroke-width="1" stroke-linecap="round"/>
+    <path d="M30 58L15 58" stroke="#4A4A4A" stroke-width="1" stroke-linecap="round"/>
+    <path d="M30 61L15 65" stroke="#4A4A4A" stroke-width="1" stroke-linecap="round"/>
+    <path d="M70 55L85 50" stroke="#4A4A4A" stroke-width="1" stroke-linecap="round"/>
+    <path d="M70 58L85 58" stroke="#4A4A4A" stroke-width="1" stroke-linecap="round"/>
+    <path d="M70 61L85 65" stroke="#4A4A4A" stroke-width="1" stroke-linecap="round"/>
+    <!-- Ears -->
+    <path d="M30 25L40 40L20 40Z" fill="#FFA07A"/>
+    <path d="M70 25L80 40L60 40Z" fill="#FFA07A"/>
+</svg> 

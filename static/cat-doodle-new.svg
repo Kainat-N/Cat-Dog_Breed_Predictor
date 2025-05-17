@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <!-- Body -->
+    <path d="M60 25C35 25 20 40 20 65C20 90 35 105 60 105C85 105 100 90 100 65C100 40 85 25 60 25Z" fill="#FFB6C1"/>
+    
+    <!-- White patches -->
+    <path d="M45 55C45 55 60 75 75 55L75 100L45 100Z" fill="white"/>
+    
+    <!-- Face features -->
+    <g transform="translate(0, -5)">
+        <!-- Eyes with highlights -->
+        <circle cx="45" cy="65" r="6" fill="#4A4A4A"/>
+        <circle cx="75" cy="65" r="6" fill="#4A4A4A"/>
+        <circle cx="47" cy="63" r="2" fill="white"/>
+        <circle cx="77" cy="63" r="2" fill="white"/>
+        
+        <!-- Eyebrows -->
+        <path d="M40 56C40 56 43 54 48 56" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round"/>
+        <path d="M70 56C70 56 73 54 78 56" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round"/>
+        
+        <!-- Nose -->
+        <path d="M58 75L62 75Q60 78 58 75Z" fill="#FF9494"/>
+        
+        <!-- Cheeks -->
+        <circle cx="40" cy="75" r="5" fill="#FFD0D0" opacity="0.6"/>
+        <circle cx="80" cy="75" r="5" fill="#FFD0D0" opacity="0.6"/>
+        
+        <!-- Happy mouth -->
+        <path d="M55 80Q60 83 65 80" fill="none" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Whiskers -->
+    <g transform="translate(0, -5)">
+        <line x1="30" y1="75" x2="50" y2="73" stroke="#4A4A4A" stroke-width="1.5"/>
+        <line x1="30" y1="78" x2="50" y2="78" stroke="#4A4A4A" stroke-width="1.5"/>
+        <line x1="30" y1="81" x2="50" y2="83" stroke="#4A4A4A" stroke-width="1.5"/>
+        <line x1="90" y1="75" x2="70" y2="73" stroke="#4A4A4A" stroke-width="1.5"/>
+        <line x1="90" y1="78" x2="70" y2="78" stroke="#4A4A4A" stroke-width="1.5"/>
+        <line x1="90" y1="81" x2="70" y2="83" stroke="#4A4A4A" stroke-width="1.5"/>
+    </g>
+    
+    <!-- Ears -->
+    <path d="M35 20L45 40L25 40Z" fill="#FFB6C1"/>
+    <path d="M85 20L95 40L75 40Z" fill="#FFB6C1"/>
+    <path d="M37 23L43 37L31 37Z" fill="#FFC0CB"/>
+    <path d="M83 23L89 37L77 37Z" fill="#FFC0CB"/>
+    
+    <!-- Sparkles -->
+    <circle cx="25" cy="30" r="2" fill="#FFD700"/>
+    <circle cx="95" cy="30" r="2" fill="#FFD700"/>
+    <circle cx="30" cy="25" r="1" fill="#FFD700"/>
+    <circle cx="90" cy="25" r="1" fill="#FFD700"/>
+</svg> 

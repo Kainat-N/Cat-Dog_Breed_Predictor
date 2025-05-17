@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&display=swap');
+
+body {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.header-container {
+    background-color: #FFE4E1;
+    padding: 2rem 0 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.header-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #FFB6C1, #FFC0CB, #FFB6C1);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.doodle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.doodle-image {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+.doodle-image:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.site-title {
+    font-size: 3rem;
+    color: #4a4a4a;
+    margin: 0;
+    font-weight: 600;
+    font-family: 'Fredoka', sans-serif;
+    letter-spacing: -0.5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    background: linear-gradient(45deg, #FF69B4, #FF8C94);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    text-fill-color: transparent;
+    padding: 0 1rem;
+}
+
+.tagline {
+    font-size: 1.4rem;
+    color: #666;
+    margin: 0.5rem 0 0;
+    font-weight: 400;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.upload-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    padding: 2.5rem;
+    margin: 2rem auto;
+    max-width: 90%;
+}
+
+.form-group {
+    padding: 0 1.5rem;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 300px;
+    margin: 1.5rem 0;
+    border-radius: 12px;
+    display: none;
+    object-fit: contain;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.prediction-result {
+    margin-top: 1.5rem;
+    padding: 1.2rem;
+    border-radius: 12px;
+    background-color: #f8f9fa;
+    display: none;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.upload-btn {
+    background-color: #FF9494;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.upload-btn:hover {
+    background-color: #FF7F7F;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#loading {
+    margin: 1.5rem 0;
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #e9ecef;
+    transition: border-color 0.3s ease;
+    width: 100%;
+}
+
+.form-control:focus {
+    border-color: #FF9494;
+    box-shadow: none;
+    outline: none;
+}
+
+.alert {
+    border: none;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: #D4EDDA;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #F8D7DA;
+    color: #721C24;
+}

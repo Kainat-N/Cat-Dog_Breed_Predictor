@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <!-- Face -->
+    <path d="M50 15C30 15 20 30 20 50C20 70 35 85 50 85C65 85 80 70 80 50C80 30 70 15 50 15Z" fill="#D2691E"/>
+    <!-- White patches -->
+    <path d="M35 35L65 35L65 75L35 75Z" fill="white"/>
+    <path d="M45 30L55 30L55 40L45 40Z" fill="white"/>
+    <!-- Eyes -->
+    <ellipse cx="35" cy="45" rx="4" ry="5" fill="#4A4A4A"/>
+    <ellipse cx="65" cy="45" rx="4" ry="5" fill="#4A4A4A"/>
+    <!-- Nose -->
+    <ellipse cx="50" cy="55" rx="5" ry="3" fill="#4A4A4A"/>
+    <!-- Mouth -->
+    <path d="M45 60Q50 65 55 60" fill="none" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round"/>
+    <!-- Ears -->
+    <path d="M25 25C25 25 35 15 45 25" fill="none" stroke="#D2691E" stroke-width="8" stroke-linecap="round"/>
+    <path d="M75 25C75 25 65 15 55 25" fill="none" stroke="#D2691E" stroke-width="8" stroke-linecap="round"/>
+    <!-- Collar -->
+    <path d="M35 70L65 70" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="50" cy="72" r="2" fill="#FFD700"/>
+</svg> 
