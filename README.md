@@ -1,6 +1,6 @@
 # Cat and Dog Breed Predictor
 
-A web application that predicts cat and dog breeds from uploaded images using machine learning. Built with Flask, TensorFlow, and modern web technologies.
+A web application that predicts cat and dog breeds from uploaded images using machine learning. Built with Flask and powered by MobileNetV2 architecture for efficient and accurate breed classification. The application combines modern web technologies with deep learning to provide real-time predictions.
 
 ## Features
 
@@ -72,6 +72,7 @@ http://localhost:5000
 
 - Backend: Flask (Python)
 - ML Framework: TensorFlow/Keras
+- Model Architecture: MobileNetV2 (pre-trained and fine-tuned for breed classification)
 - Frontend: HTML5, CSS3
 - Font: Fredoka (Google Fonts)
 - Styling: Custom CSS with animations
