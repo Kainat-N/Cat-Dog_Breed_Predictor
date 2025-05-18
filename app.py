@@ -6,6 +6,8 @@ import numpy as np
 from PIL import Image
 import pandas as pd
 import logging
+import requests
+from io import BytesIO
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -41,11 +43,13 @@ except Exception as e:
     logger.error(f"Error during initialization: {str(e)}")
     raise
 
-def preprocess_image(image_path):
+def preprocess_image(img):
     """Preprocess the image for model prediction."""
     try:
-        # Open and convert image to RGB
-        img = Image.open(image_path).convert('RGB')
+        # Convert to RGB if needed
+        if img.mode != 'RGB':
+            img = img.convert('RGB')
+        
         logger.debug(f"Original image size: {img.size}")
         
         # Resize image
@@ -66,12 +70,9 @@ def preprocess_image(image_path):
         logger.error(f"Error in image preprocessing: {str(e)}")
         raise
 
-def predict_breed(image_path):
-    """Predict the breed from an image."""
+def get_prediction(img_array):
+    """Get prediction from preprocessed image array."""
     try:
-        # Preprocess the image
-        img_array = preprocess_image(image_path)
-        
         # Make prediction
         logger.debug("Making prediction...")
         predictions = model.predict(img_array)
@@ -92,7 +93,7 @@ def predict_breed(image_path):
         return f"{breed} (Confidence: {confidence:.2%})"
     except Exception as e:
         logger.error(f"Error in prediction: {str(e)}")
-        return f"Error: {str(e)}"
+        raise
 
 @app.route('/')
 def home():
@@ -100,32 +101,46 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    if 'file' not in request.files:
-        return jsonify({'error': 'No file part'})
-    
-    file = request.files['file']
-    if file.filename == '':
-        return jsonify({'error': 'No selected file'})
-    
-    if file and allowed_file(file.filename):
-        try:
-            filename = secure_filename(file.filename)
-            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            file.save(filepath)
-            logger.info(f"Saved uploaded file to: {filepath}")
+    try:
+        if 'file' in request.files:
+            # Handle file upload
+            file = request.files['file']
+            if file.filename == '':
+                return jsonify({'error': 'No file selected'})
             
-            # Get prediction
-            breed = predict_breed(filepath)
+            if not allowed_file(file.filename):
+                return jsonify({'error': 'Invalid file type. Please upload a PNG or JPEG image.'})
+            
+            # Read the image file
+            img = Image.open(file.stream)
+            
+        elif 'url' in request.form:
+            # Handle URL upload
+            url = request.form['url']
+            try:
+                response = requests.get(url)
+                img = Image.open(BytesIO(response.content))
+            except Exception as e:
+                logger.error(f"Error fetching URL: {str(e)}")
+                return jsonify({'error': 'Unable to fetch image from URL. Please check the URL or try uploading the file directly.'})
+        else:
+            return jsonify({'error': 'No file or URL provided'})
+
+        # Process the image and get prediction
+        try:
+            img_array = preprocess_image(img)
+            prediction = get_prediction(img_array)
             
             return jsonify({
-                'prediction': breed,
-                'image_path': f'/static/uploads/{filename}'
+                'prediction': prediction
             })
         except Exception as e:
-            logger.error(f"Error processing request: {str(e)}")
-            return jsonify({'error': str(e)})
-    
-    return jsonify({'error': 'Invalid file type'})
+            logger.error(f"Error processing image: {str(e)}")
+            return jsonify({'error': 'Error processing image. Please try another image.'})
+
+    except Exception as e:
+        logger.error(f"Error during prediction: {str(e)}")
+        return jsonify({'error': f'An error occurred during prediction: {str(e)}'})
 
 if __name__ == '__main__':
     app.run(debug=True)

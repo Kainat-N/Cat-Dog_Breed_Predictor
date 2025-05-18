@@ -1,21 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&display=swap');
 
+/* Theme Variables */
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #4a4a4a;
+    --header-bg: #FFE4E1;
+    --nav-icon-color: #FF9494;
+    --modal-bg: #ffffff;
+    --modal-text: #4a4a4a;
+    --modal-heading: #FF9494;
+    --tooltip-bg: #FF9494;
+}
+
+/* Dark Theme */
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --header-bg: #2d2d2d;
+    --nav-icon-color: #FF9494;
+    --modal-bg: #2d2d2d;
+    --modal-text: #ffffff;
+    --modal-heading: #FF9494;
+    --tooltip-bg: #FF9494;
+}
+
 body {
-    background-color: #f8f9fa;
+    background-color: var(--bg-color);
     min-height: 100vh;
     margin: 0;
     padding: 0;
     font-family: 'Fredoka', sans-serif;
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .header-container {
-    background-color: #FFE4E1;
+    background-color: var(--header-bg);
     padding: 2rem 0 2rem;
     margin-bottom: 2rem;
     box-shadow: 0 2px 15px rgba(0,0,0,0.1);
     width: 100%;
     position: relative;
     overflow: hidden;
+    transition: background-color 0.3s ease;
 }
 
 .header-container::before {
@@ -166,4 +193,159 @@ body {
 .alert-danger {
     background-color: #F8D7DA;
     color: #721C24;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: transparent;
+    padding: 1rem 2rem;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-nav {
+    padding-right: 1rem;
+}
+
+.nav-link {
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5rem;
+}
+
+.nav-icon {
+    font-size: 1.5rem;
+    color: var(--nav-icon-color);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-link:hover .nav-icon {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* Theme Toggle Styles */
+.theme-toggle {
+    position: relative;
+    padding: 0.5rem 1rem;
+}
+
+.dark-icon,
+.light-icon {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+body.light-mode .dark-icon,
+body.dark-mode .light-icon {
+    display: inline-block;
+}
+
+body.light-mode .light-icon,
+body.dark-mode .dark-icon {
+    display: none;
+}
+
+/* Modal Styles */
+.modal-content {
+    background-color: var(--modal-bg);
+    color: var(--modal-text);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 148, 148, 0.2);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(255, 148, 148, 0.2);
+    padding: 1.5rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-title {
+    color: var(--modal-heading);
+    font-weight: 600;
+}
+
+.modal-body h6 {
+    color: var(--modal-heading);
+    font-weight: 600;
+}
+
+.modal-body ul {
+    padding-left: 1.2rem;
+    margin-bottom: 0;
+}
+
+.modal-body li {
+    margin-bottom: 0.5rem;
+}
+
+.modal-body li:last-child {
+    margin-bottom: 0;
+}
+
+/* Tooltip Styles */
+.tooltip .tooltip-inner {
+    background-color: var(--tooltip-bg);
+    color: white;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    line-height: 1.2;
+}
+
+.tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+    border-bottom-color: var(--tooltip-bg);
+}
+
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: var(--tooltip-bg);
+}
+
+/* Upload Tabs Styles */
+.nav-tabs {
+    border-bottom: 2px solid rgba(255, 148, 148, 0.2);
+}
+
+.nav-tabs .nav-link {
+    color: var(--text-color);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    margin-right: 0.5rem;
+    border-radius: 8px 8px 0 0;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    color: #FF9494;
+    border: none;
+    background-color: rgba(255, 148, 148, 0.1);
+}
+
+.nav-tabs .nav-link.active {
+    color: #FF9494;
+    border: none;
+    background-color: rgba(255, 148, 148, 0.15);
+}
+
+.tab-content {
+    padding-top: 1.5rem;
+}
+
+/* URL Input Styles */
+#image-url {
+    transition: all 0.3s ease;
+}
+
+#image-url:focus {
+    border-color: #FF9494;
+    box-shadow: 0 0 0 0.2rem rgba(255, 148, 148, 0.25);
 }

@@ -6,8 +6,56 @@
     <title>What's My Breed</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="light-mode">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-nav w-100 justify-content-end">
+                <a href="https://github.com/Kainat-N/Web-Whats_My_Breed" target="_blank" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="GitHub Repo">
+                    <i class="fab fa-github nav-icon"></i>
+                </a>
+                <button class="nav-link theme-toggle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Toggle Theme">
+                    <i class="fas fa-moon nav-icon dark-icon"></i>
+                    <i class="fas fa-sun nav-icon light-icon"></i>
+                </button>
+                <button class="nav-link about-btn" data-bs-target="#aboutModal" title="About">
+                    <i class="fas fa-info-circle nav-icon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Modal -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="aboutModalLabel">About What's My Breed</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome to What's My Breed! This AI-powered application helps you identify the breed of your cat or dog from a simple photo. Just upload an image, and our advanced machine learning model will analyze it to determine the breed.</p>
+                    
+                    <h6 class="mt-4 mb-2">Capabilities:</h6>
+                    <ul>
+                        <li>Can identify up to 120 different dog breeds</li>
+                        <li>Can identify up to 12 different cat breeds</li>
+                        <li>Shows predictions only when confidence level exceeds 85%</li>
+                    </ul>
+
+                    <h6 class="mt-4 mb-2">Features:</h6>
+                    <ul>
+                        <li>Quick and accurate breed identification</li>
+                        <li>Support for both cats and dogs</li>
+                        <li>User-friendly interface</li>
+                        <li>Dark/light mode for comfortable viewing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="header-container">
         <div class="container">
             <div class="row justify-content-center">
@@ -29,12 +77,37 @@
                 <div class="upload-container text-center">
                     <p class="text-muted mb-4">Upload an image of a cat or dog to predict its breed</p>
                     
-                    <form id="upload-form" enctype="multipart/form-data">
-                        <div class="form-group mb-3">
-                            <input type="file" class="form-control" id="image-upload" name="file" accept=".png,.jpg,.jpeg">
+                    <ul class="nav nav-tabs justify-content-center mb-4" id="uploadTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="file-tab" data-bs-toggle="tab" data-bs-target="#file-upload" type="button" role="tab" aria-controls="file-upload" aria-selected="true">
+                                <i class="fas fa-file-upload me-2"></i>File Upload
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="url-tab" data-bs-toggle="tab" data-bs-target="#url-upload" type="button" role="tab" aria-controls="url-upload" aria-selected="false">
+                                <i class="fas fa-link me-2"></i>Image URL
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="uploadTabsContent">
+                        <div class="tab-pane fade show active" id="file-upload" role="tabpanel" aria-labelledby="file-tab">
+                            <form id="upload-form" enctype="multipart/form-data">
+                                <div class="form-group mb-3">
+                                    <input type="file" class="form-control" id="image-upload" name="file" accept=".png,.jpg,.jpeg">
+                                </div>
+                                <button type="submit" class="upload-btn">Predict Breed</button>
+                            </form>
                         </div>
-                        <button type="submit" class="upload-btn">Predict Breed</button>
-                    </form>
+                        <div class="tab-pane fade" id="url-upload" role="tabpanel" aria-labelledby="url-tab">
+                            <form id="url-form">
+                                <div class="form-group mb-3">
+                                    <input type="url" class="form-control" id="image-url" placeholder="Enter image URL" required>
+                                </div>
+                                <button type="submit" class="upload-btn">Predict Breed</button>
+                            </form>
+                        </div>
+                    </div>
                     
                     <img id="preview" class="preview-image" src="#" alt="Preview">
                     <div id="loading" class="mt-3 d-none">
@@ -48,7 +121,43 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Initialize all tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+
+        // Initialize modal and tooltip for about button
+        const aboutBtn = document.querySelector('.about-btn');
+        const aboutModal = new bootstrap.Modal(document.getElementById('aboutModal'));
+        const aboutTooltip = new bootstrap.Tooltip(aboutBtn, {
+            placement: 'bottom'
+        });
+
+        aboutBtn.addEventListener('click', () => {
+            aboutModal.show();
+        });
+
+        // Theme toggle functionality
+        const body = document.body;
+        const themeToggle = document.querySelector('.theme-toggle');
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.remove('light-mode');
+            body.classList.add('dark-mode');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            
+            // Save theme preference
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+
         // Handle file selection for preview
         document.getElementById('image-upload').addEventListener('change', function(e) {
             const file = e.target.files[0];
@@ -59,7 +168,17 @@
             }
         });
 
-        // Handle form submission
+        // Handle URL input for preview
+        document.getElementById('image-url').addEventListener('input', function(e) {
+            const url = e.target.value;
+            if (url) {
+                const preview = document.getElementById('preview');
+                preview.style.display = 'block';
+                preview.src = url;
+            }
+        });
+
+        // Handle form submission for file upload
         document.getElementById('upload-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -78,6 +197,33 @@
             const formData = new FormData();
             formData.append('file', file);
 
+            submitPrediction(formData);
+        });
+
+        // Handle form submission for URL upload
+        document.getElementById('url-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const url = document.getElementById('image-url').value;
+            if (!url) {
+                alert('Please enter an image URL');
+                return;
+            }
+
+            // Show loading spinner
+            document.getElementById('loading').classList.remove('d-none');
+            // Hide previous prediction
+            document.getElementById('prediction-result').style.display = 'none';
+
+            // Send to server
+            const formData = new FormData();
+            formData.append('url', url);
+
+            submitPrediction(formData);
+        });
+
+        // Common function to submit prediction request
+        function submitPrediction(formData) {
             fetch('/predict', {
                 method: 'POST',
                 body: formData
@@ -102,7 +248,7 @@
                     <div class="alert alert-danger">Error: ${error.message}</div>
                 `;
             });
-        });
+        }
     </script>
 </body>
 </html>
